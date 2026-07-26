@@ -1,7 +1,7 @@
 const sections = [
   { id:'cranial', icon:'◉', title:'Cranial nerves', groups:[
     {title:'Vision and eye movements', fields:[
-      ['VA','text'], ['Visual fields','visual'], ['Pupils','otherChoice',['Equal and reactive','Other']], ['Eye movements','otherChoice',['Full','Other']], ['Pursuits','otherChoice',['Normal','Other']], ['Saccades','otherChoice',['Normal','Other']], ['Nystagmus','otherChoice',['No','Other']]
+      ['Visual acuity','pair',['R','L']], ['Visual fields','visual'], ['Pupils','otherChoice',['Equal and reactive','Other']], ['Eye movements','otherChoice',['Full','Other']], ['Pursuits','otherChoice',['Normal','Other']], ['Saccades','otherChoice',['Normal','Other']], ['Nystagmus','otherChoice',['No','Other']]
     ]},
     {title:'Face, bulbar and speech', fields:[
       ['Facial sensation','otherChoice',['Normal','Other']], ['Facial movement','otherChoice',['Normal','Other']], ['Hearing','otherChoice',['Normal','Other']], ['Palate','otherChoice',['Midline','Other']], ['Tongue','choice',['Midline','Wasting','Fasciculations','Other']], ['Dysarthria','otherChoice',['No','Other']], ['Aphasia','otherChoice',['No','Other']]
@@ -40,6 +40,7 @@ function otherInput(section,label) { const id=key(section,label,'-other'); retur
 function chips(section,label,options,type='choice') { const id=key(section,label); return `<div class="choices">${options.map(option=>`<label class="choice-chip"><input type="radio" name="${id}" value="${option}" data-label="${label}" ${state[id]===option?'checked':''}><span>${option}</span></label>`).join('')}</div>${type==='otherChoice'||options.includes('Other')?`<div class="other-wrap" ${state[id]==='Other'?'':'hidden'}>${otherInput(section,label)}</div>`:''}`; }
 function fieldMarkup(section,field) { const [label,type,options] = field; const id=key(section,label);
   if(type==='choice'||type==='otherChoice') return `<div class="field-row"><span class="field-label">${label}</span><div>${chips(section,label,options,type)}</div></div>`;
+  if(type==='pair') return `<div class="field-row"><span class="field-label">${label}</span><div class="inline-inputs">${options.map(side=>`<label>${side}<input data-key="${id}-${side.toLowerCase()}" data-label="${label} ${side}" value="${state[`${id}-${side.toLowerCase()}`]||''}" placeholder="e.g. 6/6"></label>`).join('')}</div></div>`;
   if(type==='text'||type==='textarea') { const input=type==='textarea'?`<textarea rows="3" data-key="${id}" data-label="${label}" placeholder="Write finding">${state[id]||''}</textarea>`:`<input data-key="${id}" data-label="${label}" value="${state[id]||''}" placeholder="Write finding">`; return `<div class="field-row"><span class="field-label">${label}</span>${input}</div>`; }
   if(type==='power') return powerMarkup(section,id);
   if(type==='visual') return visualMarkup(section,label);
