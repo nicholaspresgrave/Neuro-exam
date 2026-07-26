@@ -1,4 +1,4 @@
-const CACHE='neuroexam-public-v58'; const FILES=['./','./index.html','./styles.css','./sensory-map.css','./app.js','./manifest.webmanifest','./icon.svg'];
+const CACHE='neuroexam-public-v59'; const FILES=['./','./index.html','./styles.css','./sensory-map.css','./app.js','./manifest.webmanifest','./icon.svg'];
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES))));
 self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch', event => event.respondWith(caches.match(event.request).then(cached=>cached || fetch(event.request))));

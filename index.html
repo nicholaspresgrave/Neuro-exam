@@ -26,28 +26,34 @@
         <label>Date<input id="exam-date" type="date" /></label>
       </section>
 
-      <section class="history-card" aria-labelledby="history-title">
-        <div class="history-heading">
-          <div>
-            <p class="eyebrow">CLINICAL NOTE</p>
-            <h2 id="history-title">Dictate the encounter</h2>
-            <p>Capture the history, investigations, impression and plan in one place.</p>
-          </div>
-          <button id="dictate-button" class="dictate-button" type="button" aria-label="Dictation coming soon" title="Dictation coming soon" disabled>🎙</button>
-        </div>
-        <p id="dictation-status" class="dictation-status" aria-live="polite">Dictation coming soon. You can type or paste a clinical note below.</p>
-        <textarea id="history-raw" data-key="history-raw" rows="7" placeholder="Presenting complaint, history of presenting illness, background, medications, allergies, social and family history, investigation results, impression and plan…"></textarea>
-        <p class="history-hint">Dictation and AI clinical summary coming soon. You can still type or paste the clinical note and generate an examination note.</p>
-      </section>
+      <div class="documentation-workspace">
+        <aside class="clinical-sidebar" aria-labelledby="history-title">
+          <section class="history-card">
+            <div class="history-heading">
+              <div>
+                <p class="eyebrow">CLINICAL NOTE</p>
+                <h2 id="history-title">Clinical history</h2>
+                <p>Use your preferred device dictation or type directly into each section.</p>
+              </div>
+            </div>
+            <div class="history-fields">
+              <label>History<textarea id="history-raw" data-key="history-raw" rows="6" placeholder="Presenting complaint, history of presenting illness, investigations, impression and plan…"></textarea></label>
+              <label>Past medical history<textarea id="past-medical-history" data-key="past-medical-history" rows="4" placeholder="Relevant diagnoses, operations and neurological history…"></textarea></label>
+              <label>Medications and allergies<textarea id="medications-allergies" data-key="medications-allergies" rows="4" placeholder="Regular medications, doses and allergies…"></textarea></label>
+              <label>Social history<textarea id="social-history" data-key="social-history" rows="4" placeholder="Living situation, occupation, smoking, alcohol and supports…"></textarea></label>
+              <label>Family history<textarea id="family-history" data-key="family-history" rows="4" placeholder="Relevant neurological and hereditary conditions…"></textarea></label>
+            </div>
+            <p class="history-hint">Each field is included under its own heading when you generate the note.</p>
+          </section>
+        </aside>
 
-      <div id="template-options" hidden></div>
-      <input id="exam-template-state" type="hidden" data-key="exam-template" />
-      <input id="exam-mode-state" type="hidden" data-key="exam-mode" />
+        <div class="exam-workspace">
+          <div id="template-options" hidden></div>
+          <input id="exam-template-state" type="hidden" data-key="exam-template" />
+          <input id="exam-mode-state" type="hidden" data-key="exam-mode" />
 
-      <section id="quick-screen" class="quick-screen" aria-label="Quick neurological screen" hidden></section>
-      <section id="pathway-screen" class="pathway-screen" aria-label="Focused neurological assessment" hidden></section>
-
-      <div class="exam-workspace">
+          <section id="quick-screen" class="quick-screen" aria-label="Quick neurological screen" hidden></section>
+          <section id="pathway-screen" class="pathway-screen" aria-label="Focused neurological assessment" hidden></section>
         <aside class="exam-sidebar" aria-label="Examination navigation">
           <p class="eyebrow">EXAMINATION</p>
           <nav id="section-nav" class="section-nav" aria-label="Exam sections"></nav>
@@ -74,6 +80,7 @@
             <p class="helper">This is a documentation aid. Review and edit the note before it is added to a clinical record.</p>
           </section>
         </div>
+      </div>
       </div>
       </section>
 
