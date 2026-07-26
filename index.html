@@ -25,6 +25,14 @@
         <label>Date<input id="exam-date" type="date" /></label>
       </section>
 
+      <div class="exam-mode" aria-label="Exam detail level">
+        <button type="button" data-exam-mode="quick">Quick screen</button>
+        <button type="button" data-exam-mode="detailed">Detailed exam</button>
+        <input id="exam-mode-state" type="hidden" data-key="exam-mode" />
+      </div>
+
+      <section id="quick-screen" class="quick-screen" aria-label="Quick neurological screen"></section>
+
       <nav id="section-nav" class="section-nav" aria-label="Exam sections"></nav>
       <p id="progress" class="progress" aria-live="polite"></p>
 
