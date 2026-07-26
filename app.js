@@ -48,7 +48,7 @@ document.querySelector('#patient').value = state.patient || '';
 document.querySelector('#exam-mode-state').value = examMode;
 document.querySelector('#exam-template-state').value = examTemplate;
 const EXAM_TEMPLATES = [
-  ['quick','Quick screen','Rapid screen'], ['detailed','Detailed exam','Full neurological exam'], ['stroke','Stroke assessment','Acute focal deficit'], ['movement','Movement disorder','Tremor, rigidity and gait'], ['neuropathy','Neuropathy','Distal motor and sensory'], ['neuromuscular','Neuromuscular','Ocular, bulbar and weakness'], ['cognitive','Cognitive','Focused cognitive assessment']
+  ['quick','Quick assessment','Rapid neurological screen'], ['detailed','Detailed assessment','Full neurological examination'], ['stroke','Stroke assessment','Acute focal deficit'], ['movement','Movement disorder assessment','Bradykinesia, tremor and gait'], ['neuropathy','Neuropathy assessment','Distal motor and sensory'], ['neuromuscular','Neuromuscular assessment','Ocular, bulbar and weakness'], ['cognitive','Cognitive assessment','Focused cognitive assessment']
 ];
 if(!EXAM_TEMPLATES.some(([id])=>id===examTemplate))examTemplate='quick';
 document.querySelector('#exam-template-state').value = examTemplate;
@@ -59,7 +59,7 @@ templateRoot.innerHTML=EXAM_TEMPLATES.map(([id,title,description])=>`<button typ
 const QUICK_SECTIONS = [
   ['mental','Mental status','Alert'], ['cranial','Cranial nerves','Normal'], ['motor','Motor','Normal'], ['reflexes','Reflexes','Normal'], ['coordination','Coordination','Normal'], ['sensation','Sensation','Normal'], ['gait','Gait','Normal']
 ];
-quickRoot.innerHTML=`<div class="quick-heading"><div><h2>Quick screen</h2><p>Record only the parts of the examination you performed.</p></div><button type="button" class="quick-all-normal" data-quick-normal-all>Normal neurological exam</button></div>${QUICK_SECTIONS.map(([id,title,normal])=>{const selected=state[`quick-${id}-normal`]==='true';return `<article class="quick-card" data-quick-section="${id}" data-normal-label="${normal}"><div><h2>${title}</h2><p>Record a normal screen or add a finding.</p></div><div class="quick-controls"><button type="button" class="quick-normal ${selected?'selected':''}" data-quick-normal="${id}">${normal}</button><input type="hidden" data-key="quick-${id}-normal" value="${selected?'true':''}"><textarea rows="2" data-key="quick-${id}-other" placeholder="Add abnormal finding (optional)">${state[`quick-${id}-other`]||''}</textarea></div></article>`;}).join('')}`;
+quickRoot.innerHTML=`<div class="quick-heading"><div><h2>Quick assessment</h2><p>Record only the parts of the examination you performed.</p></div><button type="button" class="quick-all-normal" data-quick-normal-all>Normal neurological exam</button></div>${QUICK_SECTIONS.map(([id,title,normal])=>{const selected=state[`quick-${id}-normal`]==='true';return `<article class="quick-card" data-quick-section="${id}" data-normal-label="${normal}"><div><h2>${title}</h2><p>Record a normal screen or add a finding.</p></div><div class="quick-controls"><button type="button" class="quick-normal ${selected?'selected':''}" data-quick-normal="${id}">${normal}</button><input type="hidden" data-key="quick-${id}-normal" value="${selected?'true':''}"><textarea rows="2" data-key="quick-${id}-other" placeholder="Add abnormal finding (optional)">${state[`quick-${id}-other`]||''}</textarea></div></article>`;}).join('')}`;
 const PATHWAYS = {
   stroke:{title:'Stroke assessment',groups:[
     ['Cortical signs',[['Level of consciousness','otherChoice',['Alert','Drowsy','Other']],['Language','otherChoice',['Normal','Dysphasia','Other']],['Neglect','otherChoice',['No','Yes','Other']],['Visual fields','otherChoice',['Normal','Homonymous hemianopia','Quadrantanopia','Other']]]],
@@ -67,9 +67,10 @@ const PATHWAYS = {
     ['Motor and coordination',[['Pronator drift','choice',['None','Right','Left','Other']],['Limb power','text'],['Limb ataxia','choice',['None','Right','Left','Other']],['Sensation','otherChoice',['Normal','Hemisensory loss','Other']]]]
   ]},
   movement:{title:'Movement disorder assessment',groups:[
-    ['Parkinsonism',[['Bradykinesia','choice',['Absent','Right','Left','Bilateral','Other']],['Rigidity','choice',['Absent','Right','Left','Bilateral','Other']],['Rest tremor','choice',['Absent','Right','Left','Bilateral','Other']],['Postural/action tremor','choice',['Absent','Right','Left','Bilateral','Other']]]],
-    ['Other movement',[['Dystonia','otherChoice',['No','Yes','Other']],['Myoclonus','otherChoice',['No','Yes','Other']],['Chorea','otherChoice',['No','Yes','Other']]]],
-    ['Gait',[['Gait','choice',['Normal','Parkinsonian','Ataxic','Spastic','Other']],['Postural stability','choice',['Normal','Impaired','Other']]]]
+    ['Bradykinesia',[['Finger taps','choice',['Normal','Right impaired','Left impaired','Bilateral impaired','Other']],['Hand opening and closing','choice',['Normal','Right impaired','Left impaired','Bilateral impaired','Other']],['Pronation-supination','choice',['Normal','Right impaired','Left impaired','Bilateral impaired','Other']],['Foot taps','choice',['Normal','Right impaired','Left impaired','Bilateral impaired','Other']]]],
+    ['Tone and tremor',[['Rigidity','choice',['Absent','Right','Left','Bilateral','Other']],['Rest tremor','choice',['Absent','Right','Left','Bilateral','Other']],['Postural tremor','choice',['Absent','Right','Left','Bilateral','Other']],['Action tremor','choice',['Absent','Right','Left','Bilateral','Other']]]],
+    ['Other involuntary movements',[['Dystonia','otherChoice',['No','Yes','Other']],['Myoclonus','otherChoice',['No','Yes','Other']],['Chorea','otherChoice',['No','Yes','Other']],['Tics','otherChoice',['No','Yes','Other']]]],
+    ['Gait and balance',[['Gait','choice',['Normal','Parkinsonian','Ataxic','Spastic','Other']],['Arm swing','choice',['Normal','Reduced right','Reduced left','Reduced bilaterally','Other']],['Turning','choice',['Normal','En bloc','Other']],['Retropulsion','choice',['Negative','Positive','Unable','Other']]]]
   ]},
   neuropathy:{title:'Neuropathy assessment',groups:[
     ['Motor and reflexes',[['Distal power','otherChoice',['Normal','Weakness','Other']],['Reflex pattern','choice',['Normal','Reduced distally','Absent distally','Globally absent','Other']]]],

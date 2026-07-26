@@ -28,18 +28,14 @@
 
       <section class="exam-template" aria-label="Clinical exam focus">
         <div>
-          <p class="eyebrow">EXAM FOCUS</p>
-          <p class="template-helper">Choose a focused detailed examination, or keep the full examination.</p>
+          <p class="eyebrow">ASSESSMENT TYPE</p>
+          <p class="template-helper">Choose the assessment you are performing. Specialty assessments open their own focused examination.</p>
         </div>
         <div id="template-options" class="template-options"></div>
         <input id="exam-template-state" type="hidden" data-key="exam-template" />
       </section>
 
-      <div class="exam-mode" aria-label="Exam detail level">
-        <button type="button" data-exam-mode="quick">Quick screen</button>
-        <button type="button" data-exam-mode="detailed">Detailed exam</button>
-        <input id="exam-mode-state" type="hidden" data-key="exam-mode" />
-      </div>
+      <input id="exam-mode-state" type="hidden" data-key="exam-mode" />
 
       <section id="quick-screen" class="quick-screen" aria-label="Quick neurological screen"></section>
       <section id="pathway-screen" class="pathway-screen" aria-label="Focused neurological assessment" hidden></section>
