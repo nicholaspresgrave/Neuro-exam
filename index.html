@@ -26,57 +26,57 @@
         <label>Date<input id="exam-date" type="date" /></label>
       </section>
 
-      <section class="exam-template" aria-label="Clinical exam focus">
-        <div>
-          <p class="eyebrow">ASSESSMENT TYPE</p>
-          <p class="template-helper">Choose a rapid screen or the full neurological examination.</p>
+      <section class="history-card" aria-labelledby="history-title">
+        <div class="history-heading">
+          <div>
+            <p class="eyebrow">CLINICAL NOTE</p>
+            <h2 id="history-title">Dictate the encounter</h2>
+            <p>Capture the history, investigations, impression and plan in one place.</p>
+          </div>
+          <button id="dictate-button" class="dictate-button" type="button" aria-label="Dictation coming soon" title="Dictation coming soon" disabled>🎙</button>
         </div>
-        <div id="template-options" class="template-options"></div>
-        <input id="exam-template-state" type="hidden" data-key="exam-template" />
+        <p id="dictation-status" class="dictation-status" aria-live="polite">Dictation coming soon. You can type or paste a clinical note below.</p>
+        <textarea id="history-raw" data-key="history-raw" rows="7" placeholder="Presenting complaint, history of presenting illness, background, medications, allergies, social and family history, investigation results, impression and plan…"></textarea>
+        <p class="history-hint">Dictation and AI clinical summary coming soon. You can still type or paste the clinical note and generate an examination note.</p>
       </section>
 
+      <div id="template-options" hidden></div>
+      <input id="exam-template-state" type="hidden" data-key="exam-template" />
       <input id="exam-mode-state" type="hidden" data-key="exam-mode" />
 
-      <section id="quick-screen" class="quick-screen" aria-label="Quick neurological screen"></section>
+      <section id="quick-screen" class="quick-screen" aria-label="Quick neurological screen" hidden></section>
       <section id="pathway-screen" class="pathway-screen" aria-label="Focused neurological assessment" hidden></section>
 
-      <nav id="section-nav" class="section-nav" aria-label="Exam sections"></nav>
-      <p id="progress" class="progress" aria-live="polite"></p>
+      <div class="exam-workspace">
+        <aside class="exam-sidebar" aria-label="Examination navigation">
+          <p class="eyebrow">EXAMINATION</p>
+          <nav id="section-nav" class="section-nav" aria-label="Exam sections"></nav>
+          <p id="progress" class="progress" aria-live="polite"></p>
+        </aside>
 
-      <div id="exam-sections"></div>
+        <div class="exam-content">
+          <div id="exam-sections"></div>
 
-      <div class="note-actions">
-        <button id="save-exam-button" class="secondary-button" type="button">Save exam</button>
-        <button id="generate-button" class="generate-button" type="button">Generate note</button>
+          <div class="note-actions">
+            <button id="generate-button" class="generate-button" type="button">Generate note</button>
+            <button class="note-style-button" type="button" disabled>AI polish · Coming soon</button>
+          </div>
+
+          <section id="note-panel" class="note-panel" aria-labelledby="note-title" hidden>
+            <div class="note-heading">
+              <div>
+                <p class="eyebrow">GENERATED NOTE</p>
+                <h2 id="note-title">Neurology note</h2>
+              </div>
+              <button id="copy-button" class="secondary-button" type="button">Copy note</button>
+            </div>
+            <textarea id="note-output" aria-label="Generated examination note" spellcheck="true"></textarea>
+            <p class="helper">This is a documentation aid. Review and edit the note before it is added to a clinical record.</p>
+          </section>
+        </div>
       </div>
-
-      <section id="note-panel" class="note-panel" aria-labelledby="note-title" hidden>
-        <div class="note-heading">
-          <div>
-            <p class="eyebrow">GENERATED NOTE</p>
-            <h2 id="note-title">Neurological examination</h2>
-          </div>
-          <button id="copy-button" class="secondary-button" type="button">Copy note</button>
-        </div>
-        <textarea id="note-output" aria-label="Generated examination note" spellcheck="true"></textarea>
-        <p class="helper">This is a documentation aid. Review and edit the note before it is added to a clinical record.</p>
-      </section>
       </section>
 
-      <section id="saved-page" class="app-page saved-exams-panel" aria-labelledby="saved-exams-title" hidden>
-        <div class="note-heading">
-          <div>
-            <p class="eyebrow">ON THIS DEVICE</p>
-            <h2 id="saved-exams-title">Saved exams</h2>
-          </div>
-        </div>
-        <div id="saved-exams-list" class="saved-exams-list"></div>
-      </section>
-
-      <nav class="app-nav" aria-label="Main navigation">
-        <button class="active" type="button" data-page="exam-page">New exam</button>
-        <button type="button" data-page="saved-page">Saved exams</button>
-      </nav>
     </main>
     <script src="app.js"></script>
   </body>
