@@ -26,6 +26,15 @@
         <label>Date<input id="exam-date" type="date" /></label>
       </section>
 
+      <section class="exam-template" aria-label="Clinical exam focus">
+        <div>
+          <p class="eyebrow">EXAM FOCUS</p>
+          <p class="template-helper">Choose a focused detailed examination, or keep the full examination.</p>
+        </div>
+        <div id="template-options" class="template-options"></div>
+        <input id="exam-template-state" type="hidden" data-key="exam-template" />
+      </section>
+
       <div class="exam-mode" aria-label="Exam detail level">
         <button type="button" data-exam-mode="quick">Quick screen</button>
         <button type="button" data-exam-mode="detailed">Detailed exam</button>
