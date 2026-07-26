@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "neuro-exam",
+  "name": "neuroexam",
   "compatibility_date": "2026-07-26",
   "assets": {
     "directory": "./"
