@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
     <meta name="theme-color" content="#0b4f6c" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -15,13 +15,11 @@
   <body>
     <main class="app-shell">
       <header class="topbar">
-        <div>
-          <p class="eyebrow">CLINICAL DOCUMENTATION</p>
-          <h1>Neurological Examination</h1>
-        </div>
+        <h1>NeuroExam</h1>
         <button id="clear-button" class="text-button" type="button">Clear all</button>
       </header>
 
+      <section id="exam-page" class="app-page" aria-label="Examination">
       <section class="patient-card" aria-label="Patient details">
         <label>Patient / identifier<input id="patient" placeholder="Optional" autocomplete="off" /></label>
         <label>Date<input id="exam-date" type="date" /></label>
@@ -32,7 +30,10 @@
 
       <div id="exam-sections"></div>
 
-      <button id="generate-button" class="generate-button" type="button">Generate note</button>
+      <div class="note-actions">
+        <button id="save-exam-button" class="secondary-button" type="button">Save exam</button>
+        <button id="generate-button" class="generate-button" type="button">Generate note</button>
+      </div>
 
       <section id="note-panel" class="note-panel" aria-labelledby="note-title" hidden>
         <div class="note-heading">
@@ -45,6 +46,22 @@
         <textarea id="note-output" aria-label="Generated examination note" spellcheck="true"></textarea>
         <p class="helper">This is a documentation aid. Review and edit the note before it is added to a clinical record.</p>
       </section>
+      </section>
+
+      <section id="saved-page" class="app-page saved-exams-panel" aria-labelledby="saved-exams-title" hidden>
+        <div class="note-heading">
+          <div>
+            <p class="eyebrow">ON THIS DEVICE</p>
+            <h2 id="saved-exams-title">Saved exams</h2>
+          </div>
+        </div>
+        <div id="saved-exams-list" class="saved-exams-list"></div>
+      </section>
+
+      <nav class="app-nav" aria-label="Main navigation">
+        <button class="active" type="button" data-page="exam-page">New exam</button>
+        <button type="button" data-page="saved-page">Saved exams</button>
+      </nav>
     </main>
     <script src="app.js"></script>
   </body>
