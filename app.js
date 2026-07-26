@@ -20,7 +20,7 @@ const sections = [
   ]},
   { id:'reflexes', icon:'↺', title:'Reflexes', groups:[
     {title:'Deep tendon reflexes', table:{rows:['Biceps','BR','Triceps','Knee','Ankle'], columns:['R','L'], values:['0','1+','2+','3+','4+']}},
-    {title:'Pathological reflexes', fields:[['Hoffmann R','choice',['−','+']], ['Hoffmann L','choice',['−','+']], ['Plantar R','choice',['Down','Up']], ['Plantar L','choice',['Down','Up']]]}
+    {title:'Pathological reflexes', fields:[['Hoffmann R','choice',['−','+']], ['Hoffmann L','choice',['−','+']], ['Plantar R','choice',['Down','Up','No response']], ['Plantar L','choice',['Down','Up','No response']]]}
   ]},
   { id:'coordination', icon:'⌁', title:'Coordination', groups:[
     {title:'Cerebellar testing', fields:[['Finger–nose','choice',['Normal','R ataxia','L ataxia','Other']], ['Heel–shin','choice',['Normal','R ataxia','L ataxia','Other']], ['Rapid alternating movements','choice',['Normal','Slow','Dysmetric','Other']]]}
