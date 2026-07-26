@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b4f6c" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Neuro Note" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Neuro Note</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">CLINICAL DOCUMENTATION</p>
+          <h1>Neuro Note</h1>
+        </div>
+        <button id="clear-button" class="text-button" type="button">Clear all</button>
+      </header>
+
+      <section class="patient-card" aria-label="Patient details">
+        <label>Patient / identifier<input id="patient" placeholder="Optional" autocomplete="off" /></label>
+        <label>Date<input id="exam-date" type="date" /></label>
+      </section>
+
+      <nav id="section-nav" class="section-nav" aria-label="Exam sections"></nav>
+      <p id="progress" class="progress" aria-live="polite"></p>
+
+      <div id="exam-sections"></div>
+
+      <button id="generate-button" class="generate-button" type="button">Generate note</button>
+
+      <section id="note-panel" class="note-panel" aria-labelledby="note-title" hidden>
+        <div class="note-heading">
+          <div>
+            <p class="eyebrow">GENERATED NOTE</p>
+            <h2 id="note-title">Neurological examination</h2>
+          </div>
+          <button id="copy-button" class="secondary-button" type="button">Copy note</button>
+        </div>
+        <textarea id="note-output" aria-label="Generated examination note" spellcheck="true"></textarea>
+        <p class="helper">This is a documentation aid. Review and edit the note before it is added to a clinical record.</p>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
