@@ -1,4 +1,3 @@
-# Read the Docs build configuration for the Neuro Note static web app.
 version: 2
 
 build:
