@@ -1,0 +1,17 @@
+.sensory-map-row { align-items:start; }
+.sensory-map { width:100%; }
+.sensory-map-help { margin:0 0 8px; color:var(--muted); font-size:.76rem; }
+.sensory-finding-choices { display:flex; flex-wrap:wrap; gap:6px; }
+.sensory-finding { padding:6px 9px; color:#536a7a; background:#fff; border:1px solid #cbd8df; border-radius:7px; font-size:.76rem; font-weight:750; }
+.sensory-finding.active { color:white; background:var(--accent); border-color:var(--accent); }
+.body-maps { display:flex; justify-content:center; gap:16px; margin:12px 0 4px; padding:9px; background:#f8fbfc; border:1px solid #e1ebef; border-radius:11px; }
+.body-figure { width:min(43%,155px); text-align:center; color:var(--muted); font-size:.72rem; font-weight:800; }
+.body-figure svg { display:block; width:100%; height:auto; margin-top:3px; }
+.body-outline { fill:#e9f1f4; stroke:#b8cbd3; stroke-width:1.5; }
+.sensory-region { cursor:pointer; outline:none; }
+.sensory-region rect { fill:transparent; stroke:transparent; stroke-width:2; transition:fill .12s,stroke .12s; }
+.sensory-region:hover rect,.sensory-region:focus rect { fill:#d6eef1; stroke:var(--accent); }
+.sensory-region.selected rect { fill:#f7bc68; stroke:#b76700; }
+.sensory-map-detail { margin-top:6px; font-size:.84rem; }
+@media (max-width:520px) { .body-maps { gap:8px; padding:7px; }.body-figure { width:48%; }.sensory-finding { padding:6px 8px; } }
+.drawing-view-tabs { display:flex; gap:6px; margin-top:10px; }.drawing-view-tabs button,.drawing-actions button { padding:7px 9px; color:var(--accent-dark); background:#fff; border:1px solid #cbd8df; border-radius:8px; font-size:.75rem; font-weight:750; }.drawing-view-tabs button.active { color:white; background:var(--accent); border-color:var(--accent); }.drawing-stage { display:flex; justify-content:center; margin:8px 0; padding:7px; background:#f8fbfc; border:1px solid #e1ebef; border-radius:11px; }.sensory-draw-canvas { width:min(100%,260px); touch-action:none; user-select:none; }.sensory-draw-canvas .body-outline { pointer-events:all; }.sensory-stroke { fill:none; stroke:#c2511c; stroke-width:3.4; stroke-linecap:round; stroke-linejoin:round; pointer-events:none; }.drawing-actions { display:flex; gap:7px; }.drawing-actions button:last-child { color:#9c3d3d; border-color:#e5bbbb; }
