@@ -8,9 +8,4 @@ build:
     build:
       html:
         - mkdir -p $READTHEDOCS_OUTPUT/html
-        - |
-            if [ -f index.html ]; then
-              cp -r . $READTHEDOCS_OUTPUT/html/
-            else
-              cp -r outputs/neuro-exam/. $READTHEDOCS_OUTPUT/html/
-            fi
+        - cp index.html app.js styles.css manifest.webmanifest service-worker.js icon.svg $READTHEDOCS_OUTPUT/html/
